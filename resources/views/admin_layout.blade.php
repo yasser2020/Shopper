@@ -1,8 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-	
 	<!-- start: Meta -->
 	<meta charset="utf-8">
 	<title>Metro Admin Template - Metro UI Style Bootstrap Admin Template</title>
@@ -20,9 +18,9 @@
 	<link href="{{asset('backend/css/bootstrap-responsive.min.css')}}" rel="stylesheet">
 	<link id="base-style" href="{{asset('backend/css/style.css')}}" rel="stylesheet">
 	<link id="base-style-responsive" href="{{asset('backend/css/style-responsive.css')}}" rel="stylesheet">
+	<link  href="{{asset('backend/css/custom.css')}}" rel="stylesheet">
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&amp;subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
 	<!-- end: CSS -->
-
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
@@ -39,7 +37,7 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="index.html"><span>Metro</span></a>
+				<a class="brand" href="index.html"><span> E-Shopper</span></a>
 								
 				<!-- start: Header Menu -->
 				<div class="nav-no-collapse header-nav">
@@ -293,7 +291,7 @@
 						<!-- start: User Dropdown -->
 						<li class="dropdown">
 							<a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
-								<i class="halflings-icon white user"></i> Łukasz Holeczek
+								<i class="halflings-icon white user"></i>{{Session::get('admin_name')}}
 								<span class="caret"></span>
 							</a>
 							<ul class="dropdown-menu">
@@ -301,7 +299,7 @@
  									<span>Account Settings</span>
 								</li>
 								<li><a href="#"><i class="halflings-icon user"></i> Profile</a></li>
-								<li><a href="login.html"><i class="halflings-icon off"></i> Logout</a></li>
+								<li><a href="{{URL::to('/logout')}}"><i class="halflings-icon off"></i> Logout</a></li>
 							</ul>
 						</li>
 						<!-- end: User Dropdown -->
@@ -321,28 +319,25 @@
 			<div id="sidebar-left" class="span2">
 				<div class="nav-collapse sidebar-nav">
 					<ul class="nav nav-tabs nav-stacked main-menu">
-						<li><a href="index.html"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
-						<li><a href="messages.html"><i class="icon-envelope"></i><span class="hidden-tablet"> Messages</span></a></li>
-						<li><a href="tasks.html"><i class="icon-tasks"></i><span class="hidden-tablet"> Tasks</span></a></li>
-						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet"> UI Features</span></a></li>
-						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Widgets</span></a></li>
+						<li><a href="{{URL::to('/dashboard')}}"><i class="icon-bar-chart"></i><span class="hidden-tablet"> Dashboard</span></a></li>	
+						<li><a href="{{route('category.index')}}"><i class="icon-envelope"></i><span class="hidden-tablet"> All Categories</span></a></li>
+						<li><a href="{{route('category.create')}}"><i class="icon-tasks"></i><span class="hidden-tablet">
+						 Add Category</span></a></li>
+						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet">
+						 All Brands</span></a></li>
+						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Brand</span></a></li>
 						<li>
-							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Dropdown</span><span class="label label-important"> 3 </span></a>
+							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Products</span><span class="label label-important">New</span></a>
 							<ul>
-								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 1</span></a></li>
-								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 2</span></a></li>
-								<li><a class="submenu" href="submenu3.html"><i class="icon-file-alt"></i><span class="hidden-tablet"> Sub Menu 3</span></a></li>
+								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Product</span></a></li>
+								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">All Products</span></a></li>
+								
 							</ul>	
 						</li>
-						<li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet"> Forms</span></a></li>
-						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Charts</span></a></li>
-						<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Typography</span></a></li>
-						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Gallery</span></a></li>
-						<li><a href="table.html"><i class="icon-align-justify"></i><span class="hidden-tablet"> Tables</span></a></li>
-						<li><a href="calendar.html"><i class="icon-calendar"></i><span class="hidden-tablet"> Calendar</span></a></li>
-						<li><a href="file-manager.html"><i class="icon-folder-open"></i><span class="hidden-tablet"> File Manager</span></a></li>
-						<li><a href="icon.html"><i class="icon-star"></i><span class="hidden-tablet"> Icons</span></a></li>
-						<li><a href="login.html"><i class="icon-lock"></i><span class="hidden-tablet"> Login Page</span></a></li>
+						<li><a href="form.html"><i class="icon-edit"></i><span class="hidden-tablet">Slider</span></a></li>
+						<li><a href="chart.html"><i class="icon-list-alt"></i><span class="hidden-tablet"> Social Link</span></a></li>
+						<li><a href="typography.html"><i class="icon-font"></i><span class="hidden-tablet"> Shop Name</span></a></li>
+						<li><a href="gallery.html"><i class="icon-picture"></i><span class="hidden-tablet"> Delivery Man</span></a></li>
 					</ul>
 				</div>
 			</div>
@@ -384,10 +379,10 @@
 	
 	<footer>
 
-		<p>
+		<!-- <p>
 			<span style="text-align:left;float:left">&copy; 2013 <a href="http://bootstrapmaster.com/" alt="Bootstrap Themes">creativeLabs</a></span>
 			<span class="hidden-phone" style="text-align:right;float:right">Powered by: <a href="http://admintemplates.co/" alt="Bootstrap Admin Templates">Metro</a></span>
-		</p>
+		</p> -->
 
 	</footer>
 	
@@ -423,6 +418,8 @@
 	<script src="{{asset('backend/js/counter.js')}}"></script>
 	<script src="{{asset('backend/js/retina.js')}}"></script>
 	<script src="{{asset('backend/js/custom.js')}}"></script>
+    <script src="{{asset('backend/js/for_category_table.js')}}"></script>
+	
 	<!-- end: JavaScript-->
 	
 </body>
