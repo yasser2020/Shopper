@@ -24,6 +24,11 @@
 	<!-- start: Favicon -->
 	<link rel="shortcut icon" href="img/favicon.ico">
 	<!-- end: Favicon -->
+
+	<!-- Bootstrap CSS -->
+     
+       <link  href="{{asset('backend/css/dataTables.jqueryui.min.css')}}" rel="stylesheet">
+       <link href="{{asset('frontend/css/font-awesome.min.css')}}" rel="stylesheet">
 			
 </head>
 
@@ -323,14 +328,14 @@
 						<li><a href="{{route('category.index')}}"><i class="icon-envelope"></i><span class="hidden-tablet"> All Categories</span></a></li>
 						<li><a href="{{route('category.create')}}"><i class="icon-tasks"></i><span class="hidden-tablet">
 						 Add Category</span></a></li>
-						<li><a href="ui.html"><i class="icon-eye-open"></i><span class="hidden-tablet">
+						<li><a href="{{route('manufacture.index')}}"><i class="icon-eye-open"></i><span class="hidden-tablet">
 						 All Brands</span></a></li>
-						<li><a href="widgets.html"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Brand</span></a></li>
+						<li><a href="{{route('manufacture.create')}}"><i class="icon-dashboard"></i><span class="hidden-tablet"> Add Brand</span></a></li>
 						<li>
 							<a class="dropmenu" href="#"><i class="icon-folder-close-alt"></i><span class="hidden-tablet"> Products</span><span class="label label-important">New</span></a>
 							<ul>
-								<li><a class="submenu" href="submenu.html"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Product</span></a></li>
-								<li><a class="submenu" href="submenu2.html"><i class="icon-file-alt"></i><span class="hidden-tablet">All Products</span></a></li>
+								<li><a class="submenu" href="{{route('product.create')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">Add Product</span></a></li>
+								<li><a class="submenu" href="{{route('product.index')}}"><i class="icon-file-alt"></i><span class="hidden-tablet">All Products</span></a></li>
 								
 							</ul>	
 						</li>
@@ -418,7 +423,18 @@
 	<script src="{{asset('backend/js/counter.js')}}"></script>
 	<script src="{{asset('backend/js/retina.js')}}"></script>
 	<script src="{{asset('backend/js/custom.js')}}"></script>
-    <script src="{{asset('backend/js/for_category_table.js')}}"></script>
+	<!-- jQuery -->
+	
+	<script src="{{asset('backend/js/jquery.min.js')}}"></script>
+        <!-- DataTables -->
+        
+          <script src="{{asset('backend/js/datatables.min.js')}}"></script>
+       <!--  <script src="{{asset('backend/js/ jquery.jquery.dataTables.min.js')}}"></script> -->
+        
+        
+       
+     <!-- App scripts -->
+        @stack('scripts')
 	
 	<!-- end: JavaScript-->
 	

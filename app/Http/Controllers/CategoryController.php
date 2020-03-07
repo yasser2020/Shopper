@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Category;
+use Yajra\Datatables\Datatables;
 
 class CategoryController extends Controller
 {
@@ -14,13 +15,25 @@ class CategoryController extends Controller
      */
     public function index()
     {
-       
-         $categories=Category::all();
-        return view('admin.all_category',compact('categories'));
+         
+         return view('admin.all_category');
+    }
+    public function getCategory()
+    {
+        $category=Category::all();
+         return Datatables::of(Category::query())
+                             ->addColumn('Status', function($category) {
+                             return view('admin.action_buttons', compact('category'));
+                                 })
+                             ->setRowId('{{$id}}')
+                             ->editColumn('created_at',function($category){
+                                return $category->created_at->diffForHumans();
+                             })
+                            
+                               ->rawColumns(['Status'])
 
+                               ->make(true);
 
-        // $categories=Category::all();
-        // return view('admin.all_category',compact('categories'));
     }
 
     /**
@@ -46,10 +59,11 @@ class CategoryController extends Controller
     ]);
         $category=Category::create($request->all());
         $category->save();
-        return back()->with('success','Your category has been submitted successfully');
+        return redirect()->route('category.index')->with('success','Category has been submitted successfully');
     }
 
     /**
+
      * Display the specified resource.
      *
      * @param  int  $id
@@ -81,7 +95,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        dd($request);
+         $validatedData = $request->validate([
+        'category_name' => 'required'
+    ]);
+         $category=Category::findOrFail($id);
+        $category->update($request->all());
+        $category->save();
+        return redirect()->route('category.index')->with('success','Category has been Updated successfully');
     }
 
     /**
@@ -92,22 +112,35 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        echo "ddddddddddddddddddd";
+        Category::where('id', $id)->delete();
+                return redirect()->route('category.index')->with('success','Category deleted successfully');
+
     }
 
-    public function active_category($category_id)
-    {
-        $category=Category::findOrFail($category_id);
-        $category->update(['publication_status'=>1]);
-        $category->save();
-        return redirect()->route('category.index')->with('success','Category active successfully');
-    }
+    // public function active_category($category_id)
+    // {
+    //     $category=Category::findOrFail($category_id);
+    //     $category->update(['publication_status'=>1]);
+    //     $category->save();
+    //     return redirect()->route('category.index')->with('success','Category active successfully');
+    // }
 
     public function unactive_category($category_id)
     {
+
         $category=Category::findOrFail($category_id);
-        $category->update(['publication_status'=>0]);
-        $category->save();
-        return redirect()->route('category.index')->with('success','Category unactive successfully');
+        if($category->publication_status==1)
+           {
+                $category->update(['publication_status'=>0]);
+                $category->save();
+                return redirect()->route('category.index')->with('success','Category unactive successfully');
+            }
+            else
+            {
+                $category->update(['publication_status'=>1]);
+                $category->save();
+
+                return redirect()->route('category.index')->with('success','Category active successfully');
+            }
     }
 }

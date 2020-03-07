@@ -11,7 +11,7 @@
 |
 */
 //frontend-site.......................
-Route::get('/','HomeController@index');
+Route::get('/','HomeController@index')->name('home');
 
 
 
@@ -36,3 +36,18 @@ Route::post('/admin-dashboard','AdminController@dashboard');
 Route::resource('/category','CategoryController');
 Route::get('/active-category/{category_id}','CategoryController@active_category')->name('active-category');
 Route::get('/unactive-category/{category_id}','CategoryController@unactive_category')->name('unactive-category');
+Route::get('categories','CategoryController@getCategory')->name('get_categories');
+
+//manufacture related route
+Route::resource('/manufacture','ManufactureController');
+Route::get('/active-manufacture/{manufacture_id}','ManufactureController@active_manufacture')->name('active-manufacture');
+Route::get('/unactive-manufacture/{manufacture_id}','ManufactureController@unactive_manufacture')->name('unactive-manufacture');
+Route::get('manufactures','ManufactureController@getManufacture')->name('get_manufactures');
+
+
+//product relate route
+
+route::resource('/product','ProductController');
+Route::get('/active-product/{product_id}','ProductController@active_product')->name('active-product');
+Route::get('/unactive-product/{product_id}','ProductController@unactive_product')->name('unactive-product');
+Route::get('products','ProductController@getProduct')->name('get_products');

@@ -1,14 +1,3 @@
-
-.box-content .control-group .error-feedback
-{
-	 border:1px solid red !important;
-	 color: red;
-}
-
-.invalid-feedback {
-
-  width: 100%;
-  margin-top: 0.25rem;
-  font-size: 80%;
-  color: #e3342f;
+.body{
+  background-color: red;
 }

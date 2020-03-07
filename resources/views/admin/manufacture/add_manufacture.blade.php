@@ -10,37 +10,37 @@
 				</li>
 				<li>
 					<i class="icon-edit"></i>
-					<a href="#">Add Category</a>
+					<a href="#">Add Manufacture</a>
 				</li>
 			</ul>
 			
 			<div class="row-fluid sortable">
 				<div class="box span12">
 					<div class="box-header" data-original-title>
-						<h2><i class="halflings-icon edit"></i><span class="break"></span>Add Category</h2>
+						<h2><i class="halflings-icon edit"></i><span class="break"></span>Add Manufacture</h2>
 						
 					</div>
 					<div class="box-content">
-						<form class="form-horizontal" action="{{route('category.store')}}" method="post">
+						<form class="form-horizontal" action="{{route('manufacture.store')}}" method="post">
 							{{csrf_field()}}
 						  <fieldset>
 							<div class="control-group">
-							  <label class="control-label" for="category_name">Category Name</label>
+							  <label class="control-label" for="category_name">Manufacture Name</label>
 							  <div class="controls">
 								<input type="text" class="input-xlarge
-								{{$errors->has('category_name')?'error-feedback':''}}" name="category_name">
-								@if($errors->has('category_name'))
+								{{$errors->has('category_name')?'error-feedback':''}}" name="manufacture_name">
+								@if($errors->has('manufacture_name'))
 					              <div class="invalid-feedback">
-					              <strong>{{$errors->first('category_name')}}</strong>
+					              <strong>{{$errors->first('manufacture_name')}}</strong>
 					              </div>
 					              @endif
 							  </div>
 							</div>
 
 							<div class="control-group hidden-phone">
-							  <label class="control-label" for="textarea2">Category Description</label>
+							  <label class="control-label" for="textarea2">Manufacture Description</label>
 							  <div class="controls">
-								<textarea class="cleditor" name="category_description" cols="500" rows="3" style="width: 500px"></textarea>
+								<textarea class="cleditor" name="manufacture_description" cols="500" rows="3" style="width: 500px"></textarea>
 							  </div>
 							</div>
 
@@ -52,7 +52,7 @@
 							</div>
 
 							<div class="form-actions">
-							  <button type="submit" class="btn btn-primary">Add Category</button>
+							  <button type="submit" class="btn btn-primary">Add Manufacture</button>
 							  <button type="reset" class="btn">Cancel</button>
 							</div>
 						  </fieldset>

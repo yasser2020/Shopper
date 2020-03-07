@@ -6,7 +6,7 @@
 					<a href="{{route('home')}}">Home</a> 
 					<i class="icon-angle-right"></i>
 				</li>
-				<li><a href="#">All Categories</a></li>
+				<li><a href="#">All Products</a></li>
 			</ul>
 			@include('_message')	
 			<div class="row-fluid sortable">
@@ -14,19 +14,22 @@
 				<div class="box span12">
 					<div class="box-header" data-original-title>
 						
-						<h2><i class="halflings-icon user"></i><span class="break"></span>Categories</h2>
-						<a  style="float: right;" href="{{route('category.create')}}"><i class="fa fa-plus"></i></a>
+						<h2><i class="halflings-icon user"></i><span class="break"></span>Products</h2>
+						<a  style="float: right;" href="{{route('product.create')}}"><i class="fa fa-plus"></i></a>
 				
 					</div>
 					<div class="box-content">
 						<table class="table table-striped table-bordered bootstrap-datatable datatable"
-						 id="category_table">
+						 id="product_table">
 						  <thead>
 							  <tr>
 							  	 <th>ID</th>
+								  <th>Product Name</th>
+								  <th>Product Description</th>
+								  <th>Product Image</th>
+								  <th>Product Price</th>
 								  <th>Category Name</th>
-								  <th>Category Description</th>
-								   <th width="100px">Create At</th>
+								  <th>Manufacture Name</th>
 								  <th width="160px">Status</th>
 								
 							  </tr>
@@ -41,16 +44,19 @@
 <script>
 $(document).ready(function(){
   
-   $('#category_table').DataTable({
+   $('#product_table').DataTable({
         processing: true,
         serverSide: true,
-        ajax: '{!! route('get_categories') !!}',
+        ajax: '{!! route('get_products') !!}',
 
         columns: [
              { data: 'id', name: 'id' },
-            { data: 'category_name', name: 'category_name' },
-            { data: 'category_description', name: 'category_description' },
-               {data: 'created_at', name: 'created_at'},
+            { data: 'product_name', name: 'product_name' },
+            { data: 'product_short_description', name: 'product_short_description' },
+              { data: 'product_image', name: 'product_image' },
+               { data: 'product_price', name: 'product_price' },
+                { data: 'category_id', name: 'category_id' },
+                 { data: 'manufacture_id', name: 'manufacture_id' },
              {data: 'Status', name: 'Status'},
                
             
@@ -60,9 +66,9 @@ $(document).ready(function(){
   
 
  
-     $('#delete-button').on('click',function(e){
-        alert('ffffffff');
-      });
+     // $('#delete-button').on('click',function(e){
+     //    alert('ffffffff');
+     //  });
 
 
 
