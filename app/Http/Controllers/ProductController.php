@@ -122,7 +122,10 @@ class ProductController extends Controller
      */
     public function edit($id)
     {
-        //
+       $product=Product::findOrFail($id);
+       $category=Category::findOrFail($product->category_id);
+       $manufacture=Manufacture::findOrFail($product->manufacture_id);
+        return view('admin.product.edit_product',compact('product','category','manufacture'));
     }
 
     /**
@@ -134,7 +137,13 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+        'product_name' => 'required'
+    ]);
+         $product=Product::findOrFail($id);
+        $product->update($request->all());
+        $product->save();
+        return redirect()->route('product.index')->with('success','Product has been Updated successfully');
     }
 
     /**
